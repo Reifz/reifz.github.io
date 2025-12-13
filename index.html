@@ -39,13 +39,7 @@
     async function carregarUsuario() {
 
       // 🔐 Verifica se está logado
-      const { data: { user } } = await supabase.auth.getUser()
-
-      if (!user) {
-        document.getElementById('userData').innerHTML =
-          'Usuário não está logado'
-        return
-      }
+     
 
       // 3️⃣ BUSCA DADOS DA TABELA usuarios
       const { data, error } = await supabase
