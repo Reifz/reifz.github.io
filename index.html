@@ -1,13 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reifz Site</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Usuário - Supabase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      max-width: 400px;
+    }
+  </style>
 </head>
 <body>
-    <div>Hello World!</div>
-    <a href="notificacoes.html">Notificações</a>
+
+  <h2>Dados do usuário</h2>
+
+  <div class="box" id="userData">
+    Carregando...
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    // 1️⃣ CONFIGURAÇÃO DO SUPABASE
+    const supabaseUrl = 'https://SEU_PROJETO.supabase.co'
+    const supabaseKey = 'SUA_ANON_PUBLIC_KEY'
+
+    const supabase = window.supabase.createClient(
+      supabaseUrl,
+      supabaseKey
+    )
+
+    // 2️⃣ FUNÇÃO PRINCIPAL
+    async function carregarUsuario() {
+
+      // 🔐 Verifica se está logado
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (!user) {
+        document.getElementById('userData').innerHTML =
+          'Usuário não está logado'
+        return
+      }
+
+      // 3️⃣ BUSCA DADOS DA TABELA usuarios
+      const { data, error } = await supabase
+        .from('usuarios')
+        .select('id, name, email, randomValue')
+        .single()
+
+      if (error) {
+        document.getElementById('userData').innerHTML =
+          'Erro ao buscar dados'
+        console.error(error)
+        return
+      }
+
+      // 4️⃣ EXIBE OS DADOS
+      document.getElementById('userData').innerHTML = `
+        <p><strong>ID:</strong> ${data.id}</p>
+        <p><strong>Nome:</strong> ${data.name}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Random:</strong> ${data.randomValue}</p>
+      `
+    }
+
+    carregarUsuario()
+  </script>
+
 </body>
 </html>
