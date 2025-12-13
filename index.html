@@ -23,42 +23,5 @@
     Carregando...
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    // 1️⃣ CONFIGURAÇÃO DO SUPABASE
-    const supabaseUrl = 'https://mbspfgvptdhnrnwhwpho.supabase.co'
-    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ic3BmZ3ZwdGRobnJud2h3cGhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2MjIxMTYsImV4cCI6MjA4MTE5ODExNn0.S2WWNBKSODQtZkT84BHZNMwVmfgIFpWdWo7Ds1BzE78'
-
-    const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-    // 2️⃣ FUNÇÃO PRINCIPAL
-    async function carregarUsuario() {
-
-      // 3️⃣ BUSCA DADOS DA TABELA usuarios
-      const { data, error } = await supabase
-        .from('usuarios')
-        .select('id, name, email, randomValue')
-        .single()
-
-      if (error) {
-        document.getElementById('userData').innerHTML =
-          'Erro ao buscar dados'
-        console.error(error)
-        return
-      }
-
-      // 4️⃣ EXIBE OS DADOS
-      document.getElementById('userData').innerHTML = `
-        <p><strong>ID:</strong> ${data.id}</p>
-        <p><strong>Nome:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Random:</strong> ${data.randomValue}</p>
-      `
-    }
-
-    carregarUsuario()
-  </script>
-
 </body>
 </html>
