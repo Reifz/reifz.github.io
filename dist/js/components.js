@@ -4,5 +4,12 @@ async function loadComponent(id, file) {
   document.getElementById(id).innerHTML = html
 }
 
-loadComponent('head', '/components/head.html')
-loadComponent('header', '/components/header.html')
+document.addEventListener("DOMContentLoaded", async () => {
+  await Promise.all([
+    loadComponent('header', '/components/header.html')
+  ])
+
+  document.body.style.opacity = "1"
+  document.getElementById("app-loader").style.display = "none"
+  document.getElementById("app").style.opacity = "1"
+})
