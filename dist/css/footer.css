@@ -1,0 +1,38 @@
+.site-footer {
+  background: #05060a;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 60px 0 30px;
+  color: rgba(255,255,255,0.7);
+}
+
+.footer-title {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-socials a {
+  display: inline-block;
+  margin-right: 15px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #3b31cf;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+}
