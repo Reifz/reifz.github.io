@@ -10,6 +10,7 @@ body.loaded {
     opacity: 1;
     transition: opacity 0.25s ease;
 }
+
 /* body */
 
 /* load */
@@ -108,6 +109,7 @@ body.loaded {
 .hero-btn:hover {
     background: #ff7676;
 }
+
 /* div principal */
 
 /* others */
@@ -119,14 +121,16 @@ body.loaded {
     transition: transform 0.5s ease;
 }
 
-#livetype::after{
+#livetype::after {
     content: "|";
     margin-left: 5px;
     animation: blink 1s infinite;
 }
 
-@keyframes blink{
-    50%{opacity: 0;}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
-/* others */
 
+/* others */
